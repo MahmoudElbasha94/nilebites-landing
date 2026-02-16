@@ -1,0 +1,166 @@
+NileBites – Production Sprint
+
+Sprint Duration
+You have 3 hours to deliver a production-ready landing page using professional
+Git & GitHub workflow. No shortcuts. No direct pushes to main.
+
+---------------------------------------------------------------------
+
+SCENARIO
+
+You are part of the frontend department at NileBites, a startup restaurant 
+preparing to launch its first online landing page.
+
+The CEO has announced:
+
+"We launch today.
+Work as a team.
+Follow proper Git workflow.
+Production must stay clean."
+
+Each team acts as an independent development squad inside the company.
+
+Your mission is not just to build UI.
+Your mission is to collaborate like a real company.
+
+---------------------------------------------------------------------
+
+TEAM ROLES
+
+Each team must clearly assign roles.
+
+Team Lead (Integrator)
+- Manages repository structure
+- Protects main branch
+- Reviews final approvals
+- Merges Pull Requests
+- Resolves merge conflicts
+- Ensures repository cleanliness
+
+Frontend Developer A (Structure Engineer)
+- Builds layout structure (HTML)
+- Creates feature branches
+- Opens Pull Requests with proper descriptions
+- Links Pull Requests to Issues
+
+Frontend Developer B (UI & Styling Engineer)
+- Styles components (CSS)
+- Improves responsiveness
+- Enhances user experience
+- Opens Pull Requests with clear explanations
+
+QA & Code Reviewer (Quality Gatekeeper)
+- Reviews Pull Requests
+- Requests changes when necessary
+- Opens Issues for bugs or improvements
+- Approves only when standards are met
+
+Release Manager (Only for 5-person team)
+- Creates version tags
+- Writes release notes
+- Ensures release documentation is complete
+
+---------------------------------------------------------------------
+
+PROJECT FILES
+
+Your repository includes:
+
+index.html
+style.css
+script.js
+README.md
+
+Each team must work on ONE feature module:
+
+- Hero Section + CTA
+- Menu Cards Section
+- About Section
+- Testimonials Section
+- Contact Form
+- Navbar + Smooth Scroll
+- Footer + Social Links
+
+Each team chooses or is assigned one module.
+
+---------------------------------------------------------------------
+
+COMPANY RULES (STRICT)
+
+1. No direct push to main.
+2. Every feature must start with an Issue.
+3. Every feature must have its own branch.
+4. Every change must go through a Pull Request.
+5. At least one Pull Request must be rejected and improved.
+6. All Pull Requests must contain:
+   - Clear description
+   - What was added
+   - How to test it
+7. All work must be linked to Issues.
+8. The main branch must remain stable at all times.
+
+---------------------------------------------------------------------
+
+WORKFLOW EXPECTATIONS
+
+PLANNING
+- Create Issues for all tasks.
+- Assign Issues to team members.
+- Create a Milestone named Sprint-1.
+
+DEVELOPMENT
+Each developer must:
+- Create a feature branch
+- Make meaningful commits
+- Push branch to GitHub
+- Open a Pull Request
+
+Example branch names:
+feature/hero-section
+feature/menu-grid
+feature/navbar-scroll
+
+Example commit messages:
+add hero layout structure
+style menu grid responsive
+fix button alignment
+
+CODE REVIEW
+QA must:
+- Review every Pull Request
+- Request changes at least once
+- Leave constructive comments
+- Approve only after improvements
+
+Team Lead must:
+- Merge only after approval
+- Resolve merge conflicts properly
+- Keep commit history organized
+
+---------------------------------------------------------------------
+
+MANDATORY MERGE CONFLICT
+
+All teams must modify the same file:
+
+index.html – Navigation section
+
+Developer A must add a new navigation link.
+Developer B must add a different navigation link.
+
+Team Lead must resolve the conflict correctly.
+No deleting teammates’ work.
+
+---------------------------------------------------------------------
+
+RELEASE REQUIREMENTS
+
+Before finishing:
+- All feature branches must be merged
+- No open Pull Requests
+- Create at least one version tag:
+v1.0.0-team-name
+- Update README.md with:
+  - Team roles
+  - Who did what
+  - Project description
