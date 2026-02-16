@@ -1,0 +1,356 @@
+INSTRUCTOR FULL SOLUTION (Solo Run)
+NileBites – Production Sprint (3 Hours)
+
+============================================================
+0) INITIAL SETUP (LOCAL + REMOTE)
+============================================================
+
+A) Create a Repository on GitHub
+- Repository name: nilebites-landing
+- Add README (optional)
+- Branch protection will be configured later
+
+B) Clone the Repository Locally
+git clone <YOUR_REPOSITORY_URL>
+cd nilebites-landing
+
+C) Ensure "main" is the Default Branch
+git branch -M main
+git push -u origin main
+
+D) Create Basic Project Structure (if not already created)
+- index.html
+- style.css
+- script.js
+- README.md
+
+Commit the Baseline
+git add .
+git commit -m "chore: baseline project structure"
+git push
+
+============================================================
+1) GITHUB PROJECT MANAGEMENT (ISSUES + MILESTONE)
+============================================================
+
+On GitHub:
+
+1) Create a Milestone:
+Name: Sprint-1
+
+2) Create at Least 4 Issues:
+
+Issue #1: "Hero section + CTA"
+Issue #2: "Navbar links update (conflict scenario)"
+Issue #3: "Menu cards section"
+Issue #4: "README update + release notes"
+
+Optional (for realism):
+
+Issue #5: "Fix: mobile spacing in hero"
+Issue #6: "Improve: smooth scroll behavior"
+
+============================================================
+2) BRANCH PROTECTION (SIMULATING COMPANY RULES)
+============================================================
+
+Repository → Settings → Rules → Rulesets
+Click: New branch ruleset
+
+Ruleset Name:
+Protect main branch
+
+Enforcement status:
+Set to ACTIVE
+
+Under "Target branches":
+
+Click: Add target
+
+Choose ONE of the following:
+
+Option A (Recommended):
+Include default branch
+
+OR
+
+Option B:
+Include by pattern
+Type:
+main [or the name of the default branch]
+
+Under "Branch rules", enable the following:
+
+1) Require a pull request before merging
+
+2) Required approvals: Set to 1
+
+3) Dismiss stale pull request approvals when new commits are pushed
+
+4) Restrict deletions
+
+5) Block force pushes
+
+============================================================
+EXPECTED WORKFLOW AFTER PROTECTION
+============================================================
+
+Developer:
+- Creates feature branch
+- Pushes branch
+- Opens Pull Request
+
+QA:
+- Reviews Pull Request
+- Requests changes if needed
+- Approves after fixes
+
+Team Lead:
+- Merges Pull Request into main
+
+Direct push to main will be rejected.
+============================================================
+3) FEATURE #1 – HERO SECTION + CTA
+============================================================
+
+Create a Feature Branch
+git checkout -b feature/hero-section
+
+Edit index.html
+Add inside <body>:
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="#top">NileBites</a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section id="top" class="hero">
+  <div class="hero-content">
+    <h1>Fresh Egyptian Bites, Delivered Fast</h1>
+    <p>Discover chef-made meals, prepared daily and delivered to your door.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#menu">Explore Menu</a>
+      <a class="btn secondary" href="#contact">Order Now</a>
+    </div>
+  </div>
+</section>
+
+Edit style.css:
+
+body { margin:0; font-family: system-ui, Arial, sans-serif; }
+.site-header { position: sticky; top:0; background:#fff; border-bottom:1px solid #eee; }
+.nav { display:flex; justify-content:space-between; align-items:center; padding:14px 20px; }
+.nav a { text-decoration:none; color:#222; margin-left:14px; }
+.hero { padding:70px 20px; }
+.hero-content { max-width:900px; margin:0 auto; }
+.hero-actions { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+.btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid #222; }
+.btn.primary { background:#222; color:#fff; }
+.btn.secondary { background:#fff; color:#222; }
+
+Commit Changes
+git add index.html style.css
+git commit -m "feat: add hero section with CTA"
+git push -u origin feature/hero-section
+
+Open a Pull Request on GitHub
+
+Title:
+feat: Hero section + CTA (closes #1)
+
+Description:
+- What was added
+- How to test it
+
+Simulate QA Feedback:
+Comment: "Please improve mobile spacing and button alignment."
+
+Make Improvements:
+git commit -am "fix: improve hero button responsiveness"
+git push
+
+Merge the Pull Request.
+
+Update Local Main:
+git checkout main
+git pull
+
+============================================================
+4) MANDATORY MERGE CONFLICT (NAVBAR LINKS)
+============================================================
+
+Objective:
+- Branch A adds one navigation link
+- Branch B adds another navigation link
+- Merging them causes a conflict
+- You resolve it correctly
+
+------------------------------------------------------------
+A) Branch A
+------------------------------------------------------------
+
+git checkout -b feature/nav-link-reservations
+
+In index.html, inside .nav-links, add:
+<a href="#reservations">Reservations</a>
+
+git add index.html
+git commit -m "feat: add Reservations link to navbar (closes #2)"
+git push -u origin feature/nav-link-reservations
+
+Open PR but do NOT merge yet.
+
+------------------------------------------------------------
+B) Branch B
+------------------------------------------------------------
+
+git checkout main
+git pull
+git checkout -b feature/nav-link-offers
+
+Add:
+<a href="#offers">Offers</a>
+
+git add index.html
+git commit -m "feat: add Offers link to navbar (refs #2)"
+git push -u origin feature/nav-link-offers
+
+------------------------------------------------------------
+C) Create and Resolve Conflict
+------------------------------------------------------------
+
+Merge Branch A first.
+
+Then merge Branch B into main locally:
+
+git checkout main
+git pull
+git merge origin/feature/nav-link-offers
+
+You will see conflict markers:
+
+<<<<<<< HEAD
+...Reservations...
+=======
+...Offers...
+>>>>>>> origin/feature/nav-link-offers
+
+Resolve by keeping BOTH links:
+
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#offers">Offers</a>
+<a href="#reservations">Reservations</a>
+<a href="#contact">Contact</a>
+
+Complete the merge:
+
+git add index.html
+git commit -m "merge: resolve navbar links conflict (offers + reservations)"
+git push
+
+============================================================
+5) FEATURE #2 – MENU CARDS SECTION
+============================================================
+
+git checkout -b feature/menu-cards
+git pull origin main
+
+Add to index.html:
+
+<section id="menu" class="section">
+  <h2>Menu</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Koshary Bowl</h3>
+      <p>Classic Egyptian comfort food with spicy tomato sauce.</p>
+    </article>
+    <article class="card">
+      <h3>Chicken Shawarma</h3>
+      <p>Freshly grilled chicken wrapped with garlic sauce.</p>
+    </article>
+    <article class="card">
+      <h3>Molokhia</h3>
+      <p>Traditional green soup served with rice.</p>
+    </article>
+  </div>
+</section>
+
+Add to style.css:
+
+.section { padding:50px 20px; max-width:900px; margin:0 auto; }
+.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:16px; }
+.card { border:1px solid #eee; border-radius:14px; padding:16px; background:#fff; }
+.card h3 { margin:0 0 8px; }
+
+git add index.html style.css
+git commit -m "feat: add menu cards section (closes #3)"
+git push -u origin feature/menu-cards
+
+Open PR, review, and merge.
+
+============================================================
+6) README UPDATE
+============================================================
+
+git checkout -b chore/readme-release
+git pull origin main
+
+Update README.md with:
+
+- Project description
+- Roles simulation
+- Delivered features
+- How to run locally
+
+git add README.md
+git commit -m "docs: update README with project details (closes #4)"
+git push -u origin chore/readme-release
+
+Open PR and merge.
+
+============================================================
+7) CREATE TAG AND RELEASE
+============================================================
+
+git checkout main
+git pull
+
+Create tag:
+git tag v1.0.0-team-solo
+git push origin v1.0.0-team-solo
+
+On GitHub:
+Releases → Draft New Release
+Tag: v1.0.0-team-solo
+Title: NileBites Landing v1.0.0
+
+Release Notes:
+- Added hero section
+- Added menu cards section
+- Updated navbar links
+- Resolved merge conflict
+- Updated README
+
+Publish release.
+
+============================================================
+8) FINAL VERIFICATION CHECKLIST
+============================================================
+
+- Minimum 4 issues created
+- Minimum 4 pull requests merged
+- At least 1 PR improved after review
+- At least 1 merge conflict resolved
+- Main branch protected
+- Tag created and pushed
+- Release published
+- README updated
+
+END

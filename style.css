@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+.nav a {
+  text-decoration: none;
+  color: #222;
+  margin-left: 14px;
+}
+.hero {
+  padding: 70px 20px;
+}
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+.btn.primary {
+  background: #222;
+  color: #fff;
+}
+.btn.secondary {
+  background: #fff;
+  color: #222;
+}
