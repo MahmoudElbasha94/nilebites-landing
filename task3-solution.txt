@@ -54,21 +54,61 @@ Issue #6: "Improve: smooth scroll behavior"
 2) BRANCH PROTECTION (SIMULATING COMPANY RULES)
 ============================================================
 
-On GitHub:
-Settings → Branches → Add rule for "main"
+Repository → Settings → Rules → Rulesets
+Click: New branch ruleset
 
-Enable:
-- Require a pull request before merging
-- Require at least 1 approval
-- Dismiss stale approvals (optional)
-- Restrict who can push (optional)
+Ruleset Name:
+Protect main branch
 
-Save the rule.
+Enforcement status:
+Set to ACTIVE
 
-If working solo, you can simulate reviews by:
-- Requesting changes from yourself
-- Or using a second GitHub account
+Under "Target branches":
 
+Click: Add target
+
+Choose ONE of the following:
+
+Option A (Recommended):
+Include default branch
+
+OR
+
+Option B:
+Include by pattern
+Type:
+main [or the name of the default branch]
+
+Under "Branch rules", enable the following:
+
+1) Require a pull request before merging
+
+2) Required approvals: Set to 1
+
+3) Dismiss stale pull request approvals when new commits are pushed
+
+4) Restrict deletions
+
+5) Block force pushes
+
+============================================================
+EXPECTED WORKFLOW AFTER PROTECTION
+============================================================
+
+Developer:
+- Creates feature branch
+- Pushes branch
+- Opens Pull Request
+
+QA:
+- Reviews Pull Request
+- Requests changes if needed
+- Approves after fixes
+
+Team Lead:
+- Merges Pull Request into main
+
+Direct push to main will be rejected.
 ============================================================
 3) FEATURE #1 – HERO SECTION + CTA
 ============================================================
